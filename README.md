@@ -42,6 +42,12 @@ docker run --name voice-changer-dev \
     -p 5000:5000 \
     -v $(pwd)/app.py:/app/app.py \
     voice-changer
+
+# PowerShell: use ${pwd} instead of $(pwd)
+docker run --name voice-changer-dev `
+    -p 5000:5000 `
+    -v ${pwd}/app.py:/app/app.py `
+    voice-changer
 ```
 ### Step 2: Edit `app.py`
 
@@ -53,15 +59,18 @@ Find the `<select id="effect">` in the TEMPLATE and add the new option `Reverse_
 
 ### Step 4: Test your changes
 1. Save `app.py`
-2. Restart the container:
-```bash
-docker restart voice-changer-dev
-```
-3. Refresh http://localhost:5000 in your browser
-4. Select "Reverse_yourstudentID" and test it!
+2. Refresh http://localhost:5000 in your browser
+3. Select "Reverse_yourstudentID" and test it!
 
-### Step 5: Clean up
+### Step 5: Save your results for Blackboard submission
+
+Save a `screenshot` (**sample on lecture slides**) showing both:
+- The browser with your effect working
+- The terminal with docker run command visible
+
+### Step 6: Clean up
 ```bash
 docker stop voice-changer-dev
 docker rm voice-changer-dev
+docker rm voice-changer
 ```
