@@ -16,7 +16,8 @@ Built for the **Python Environment & Docker Workshop** to demonstrate:
 
 ```bash
 # Build the image
-docker build -t voice-changer .
+docker build --network=host -t voice-changer .
+# Note: The --network=host flag is required to avoid connection issues during build (see Issue #2 for details).
 
 # Run the container
 docker run --name voice-changer -p 5000:5000 voice-changer
