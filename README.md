@@ -20,10 +20,10 @@ docker build --network=host -t voice-changer .
 # Note: The --network=host flag is required to avoid connection issues during build (see Issue #2 for details).
 
 # Run the container
-docker run --name voice-changer -p 5000:5000 voice-changer
+docker run --name voice-changer -p 8080:5000 voice-changer
 ```
 
-Open http://localhost:5000 in your browser to play with!
+Open http://localhost:8080 in your browser to play with!
 
 ```bash
 # To stop the container
@@ -40,13 +40,13 @@ Use **bind mount** to sync your local code with the container:
 
 ```bash
 docker run --name voice-changer-dev \
-    -p 5000:5000 \
+    -p 8080:5000 \
     -v $(pwd)/app.py:/app/app.py \
     voice-changer
 
 # PowerShell: use ${pwd} instead of $(pwd)
 docker run --name voice-changer-dev `
-    -p 5000:5000 `
+    -p 8080:5000 `
     -v ${pwd}/app.py:/app/app.py `
     voice-changer
 ```
@@ -60,7 +60,7 @@ Find the `<select id="effect">` in the TEMPLATE and add the new option `Reverse_
 
 ### Step 4: Test your changes
 1. Save `app.py`
-2. Refresh http://localhost:5000 in your browser
+2. Refresh http://localhost:8080 in your browser
 3. Select "Reverse_yourstudentID" and test it!
 
 ### Step 5: Save your results for Blackboard submission
